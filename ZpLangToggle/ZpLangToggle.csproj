@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>ZpLangToggle</AssemblyName>
+    <RootNamespace>ZpLangToggle</RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GameDir Condition="'$(GameDir)'==''">C:\Program Files (x86)\Steam\steamapps\common\Zero Parades</GameDir>
+    <BepInExDir>$(GameDir)\BepInEx</BepInExDir>
+    <InteropDir>$(BepInExDir)\interop</InteropDir>
+    <CoreDir>$(BepInExDir)\core</CoreDir>
+    <AssemblySearchPaths>$(InteropDir);$(CoreDir);$(AssemblySearchPaths)</AssemblySearchPaths>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- BepInEx + Il2CppInterop runtime -->
+    <Reference Include="BepInEx.Core"><Private>false</Private></Reference>
+    <Reference Include="BepInEx.Unity.IL2CPP"><Private>false</Private></Reference>
+    <Reference Include="Il2CppInterop.Runtime"><Private>false</Private></Reference>
+
+    <!-- Unity core / input / UI / TMP -->
+    <Reference Include="UnityEngine"><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.InputLegacyModule"><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.UI"><Private>false</Private></Reference>
+    <Reference Include="Unity.TextMeshPro"><Private>false</Private></Reference>
+
+    <!-- Game-specific (ZA/UM namespaces) -->
+    <Reference Include="ZAUM.FELD"><Private>false</Private></Reference>
+    <Reference Include="ZAUM.C4.Common"><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><Private>false</Private></Reference>
+
+    <!-- Il2Cpp BCL (referenced via the Il2Cpp wrapper inheritance chain) -->
+    <Reference Include="Il2Cppmscorlib"><Private>false</Private></Reference>
+  </ItemGroup>
+
+  <Target Name="DeployPlugin" AfterTargets="Build">
+    <PropertyGroup>
+      <PluginsDir>$(BepInExDir)\plugins\ZpLangToggle</PluginsDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(PluginsDir)" />
+    <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="$(PluginsDir)" />
+    <Message Text="[ZpLangToggle] Deployed to $(PluginsDir)" Importance="high" />
+  </Target>
+</Project>
