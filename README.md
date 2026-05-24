@@ -10,7 +10,7 @@ A mod that lets you swap *Zero Parades*' text language with one keypress, the wa
 2. Extract it into your *Zero Parades* install folder (the one containing `ZeroParades.exe`).
 3. Launch the game.
 
-   The first launch takes 30–60 seconds longer than normal: BepInEx downloads Unity base libraries (~10 MB) from the internet and generates IL2CPP wrapper assemblies. A small console window may appear briefly — that's BepInEx, it's expected. Subsequent launches are normal speed.
+   The first launch takes longer than normal: BepInEx downloads Unity base libraries from the internet and generates IL2CPP wrapper assemblies. A small console window may appear briefly — that's BepInEx, it's expected. Subsequent launches are normal speed.
 
 4. In game, press **`;`** (semicolon) to toggle between languages.
 
@@ -74,7 +74,7 @@ Delete the following from your game folder. Your saves are not touched (your lan
 ## Troubleshooting
 
 - **Hotkey does nothing**: Make sure `ToggleKey` in `BepInEx\config\zp.langtoggle.cfg` is a valid Unity `KeyCode` name (`Semicolon`, `F8`, `BackQuote`, etc.).
-- **`Invalid LanguageA/B in config`**: You typed an unknown language code. Pick one from the table above.
+- **Invalid LanguageA/B in config**: You typed an unknown language code. Pick one from the table above.
 - **Mod stops working after a game update**: Please open an issue with the game version and your log.
 
 ## Building from source
