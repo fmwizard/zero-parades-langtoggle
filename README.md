@@ -8,7 +8,7 @@ A mod that lets you swap *Zero Parades*' text language with one keypress, the wa
 
 1. Download the latest release zip.
 2. Extract it into your *Zero Parades* install folder (the one containing `ZeroParades.exe`).
-3. Launch the game.
+3. Launch the game (for Steam users, launch from your Steam library, not by double-clicking `ZeroParades.exe` in the game folder).
 
    The first launch takes longer than normal: BepInEx downloads Unity base libraries from the internet and generates IL2CPP wrapper assemblies. A small console window may appear briefly — that's BepInEx, it's expected. Subsequent launches are normal speed.
 
